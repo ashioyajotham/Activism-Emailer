@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h1 class="mb-4">Active Campaigns</h1>
+    </div>
+    
+    {% for campaign in campaigns %}
+    <div class="col-md-6 mb-4">
+        <div class="card campaign-card">
+            <div class="card-body">
+                <h5 class="card-title">{{ campaign.title }}</h5>
+                <p class="card-text">{{ campaign.description }}</p>
+                
+                <div class="progress mb-3">
+                    <div class="progress-bar" role="progressbar" 
+                         style="width: {{ (campaign.total_emails / campaign.goal * 100) if campaign.goal else 0 }}%">
+                        {{ campaign.total_emails }} emails sent
+                    </div>
+                </div>
+
+                <button type="button" class="btn btn-primary" 
+                        data-bs-toggle="modal" 
+                        data-bs-target="#emailModal{{ campaign.id }}">
+                    Preview & Send Email
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Email Preview Modal -->
+    <div class="modal fade" id="emailModal{{ campaign.id }}" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Preview Email - {{ campaign.title }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="email-preview mb-4">
+                        <p><strong>To:</strong> {{ campaign.target_email }}</p>
+                        <hr>
+                        <pre>{{ campaign.email_template }}</pre>
+                    </div>
+                    
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <a href="mailto:{{ campaign.target_email }}?subject={{ campaign.title }}&body={{ campaign.email_template|urlencode }}" 
+                           onclick="incrementEmailCount({{ campaign.id }})"
+                           class="btn btn-primary">Send via Email App</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<script>
+function incrementEmailCount(campaignId) {
+    fetch(`/record_email/${campaignId}`, {
+        method: 'POST',
+    });
+}
+</script>
+{% endblock %}

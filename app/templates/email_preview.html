@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="email-preview-container">
+    <!-- Header Info -->
+    <div class="preview-header">
+        <h2>Email Preview</h2>
+        <div class="recipient-info">
+            <p><strong>To:</strong> {{ campaign.target_email }}</p>
+            <p><strong>Campaign:</strong> {{ campaign.title }}</p>
+        </div>
+    </div>
+
+    <!-- Email Content -->
+    <div class="email-content">
+        <div class="content-box">
+            {{ campaign.email_template | safe }}
+        </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+        <form action="{{ url_for('main.send_email', campaign_id=campaign.id) }}" method="POST">
+            <button type="button" class="btn btn-secondary" onclick="window.history.back()">Back</button>
+            <button type="submit" class="btn btn-primary">Send Email</button>
+        </form>
+    </div>
+</div>
+
+<!-- Custom Styles -->
+<style>
+    .email-preview-container {
+        max-width: 800px;
+        margin: 2rem auto;
+        padding: 20px;
+        background: #fff;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        border-radius: 8px;
+    }
+
+    .preview-header {
+        border-bottom: 1px solid #eee;
+        padding-bottom: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .recipient-info {
+        background: #f8f9fa;
+        padding: 1rem;
+        border-radius: 4px;
+        margin: 1rem 0;
+    }
+
+    .email-content {
+        min-height: 300px;
+        margin: 1rem 0;
+    }
+
+    .content-box {
+        background: #f8f9fa;
+        padding: 1.5rem;
+        border-radius: 4px;
+        white-space: pre-line;
+    }
+
+    .action-buttons {
+        margin-top: 2rem;
+        text-align: right;
+    }
+
+    .action-buttons button {
+        margin-left: 10px;
+    }
+</style>
+{% endblock %}
