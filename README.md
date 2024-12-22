@@ -24,8 +24,9 @@ python -m venv venv
 venv\Scripts\activate
 pip install -r requirements.txt
 python run.py
+```
 
-Contributing
+## Contributing
 1. Fork repository
 2. Create feature branch
 3. Submit pull request
