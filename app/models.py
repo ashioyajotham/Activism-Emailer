@@ -10,3 +10,8 @@ class Campaign(db.Model):
     email_template = db.Column(db.Text, nullable=False)
     total_emails = db.Column(db.Integer, default=0)
     goal = db.Column(db.Integer, default=100)
+    
+    @property
+    def target_emails(self):
+        """Convert comma-separated email string to list"""
+        return [email.strip() for email in self.target_email.split(',')]
