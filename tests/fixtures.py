@@ -26,7 +26,7 @@ Sincerely,
             description="Help improve resources for missing persons cases",
             target_email="amnesty.kenya@amnesty.or.ke, ohchr-InfoDesk@un.org, thehague@fidh.org, info@frontlinedefenders.org, au-banjul@africa-union.org",
             email_template="""Hi,
-            
+
 I am writing to you as a deeply concerned citizen of Kenya to express my alarm regarding the increasing reports of state abductions in our country. This escalating human rights issue is causing widespread fear and instability, and I believe it is crucial to address it urgently.
 I am particularly troubled by the apparent impunity with which these abductions are being carried out. The lack of accountability for perpetrators and the absence of transparent investigations are eroding public trust and creating a climate of fear.
 As a concerned citizen, I want to contribute to efforts to stop these human rights abuses and ensure the safety and security of all Kenyans. I believe your organization plays a vital role in defending human rights and holding the government accountable.
