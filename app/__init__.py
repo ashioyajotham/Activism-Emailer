@@ -4,6 +4,7 @@ from flask_migrate import Migrate
 from markupsafe import Markup
 from config import Config
 from datetime import datetime
+from flask import render_template
 
 db = SQLAlchemy()
 migrate = Migrate()
@@ -36,8 +37,12 @@ def create_app():
     def utility_processor():
         return dict(now=datetime.now())
     
-    from app.routes import main
-    app.register_blueprint(main)
+    from .routes import main as main_blueprint
+    app.register_blueprint(main_blueprint)
+
+    @app.errorhandler(500)
+    def internal_error(error):
+        return render_template('errors/500.html'), 500
 
     return app
 
