@@ -5,14 +5,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const campaignCards = document.querySelectorAll('.campaign-card');
     const modal = document.getElementById('emailModal');
     const closeBtn = document.querySelector('.close');
-    const modalContent = document.querySelector('.email-preview');
 
-    // Email Preview Handler
+    // Email Preview System
     window.showEmailPreview = function(campaignId) {
-        if (!modal || !modalContent) return;
+        const modal = document.getElementById('emailModal');
+        const modalContent = modal.querySelector('.modal-content');
         
         modal.style.display = 'block';
-        modalContent.innerHTML = '<div class="loading">Loading preview...</div>';
+        document.body.style.overflow = 'hidden';
+        
+        const emailPreview = modalContent.querySelector('.email-preview');
+        emailPreview.innerHTML = '<div class="loading">Loading preview...</div>';
 
         fetch(`/generate_email/${campaignId}`)
             .then(response => {
@@ -22,34 +25,43 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(data => {
                 if (data.status === 'error') throw new Error(data.message);
                 
-                // Update preview content
-                const emailTo = document.getElementById('emailTo');
-                const emailSubject = document.getElementById('emailSubject');
-                const emailBody = document.getElementById('emailBody');
+                emailPreview.innerHTML = `
+                    <div class="email-field">
+                        <label>To:</label>
+                        <span>${data.recipients}</span>
+                    </div>
+                    <div class="email-field">
+                        <label>Subject:</label>
+                        <span>${data.subject}</span>
+                    </div>
+                    <div class="email-content">${data.body.replace(/\n/g, '<br>')}</div>
+                `;
+                
                 const sendBtn = document.getElementById('sendEmailBtn');
-
-                if (emailTo) emailTo.textContent = data.recipients;
-                if (emailSubject) emailSubject.textContent = data.subject;
-                if (emailBody) emailBody.innerHTML = data.body.replace(/\n/g, '<br>');
-
-                // Setup send button
                 if (sendBtn) {
-                    sendBtn.onclick = function(e) {
-                        e.preventDefault();
+                    sendBtn.onclick = function() {
                         window.location.href = data.mailto;
-                        modal.style.display = 'none';
+                        closeModal();
                     };
                 }
             })
             .catch(error => {
                 console.error('Preview error:', error);
-                modalContent.innerHTML = `
+                emailPreview.innerHTML = `
                     <div class="error-message">
                         Failed to load email preview. Please try again.
                         <div class="error-details">${error.message}</div>
                     </div>`;
             });
     };
+
+    // Modal Control Functions
+    function closeModal() {
+        if (modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    }
 
     // Campaign Filter Function
     function filterCampaigns() {
@@ -69,11 +81,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Modal Control Functions
-    function closeModal() {
-        if (modal) modal.style.display = 'none';
-    }
-
     // Event Listeners
     if (searchInput) {
         searchInput.addEventListener('input', filterCampaigns);
@@ -87,6 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
         closeBtn.addEventListener('click', closeModal);
     }
 
+    // Close modal on outside click
     window.onclick = function(event) {
         if (event.target === modal) {
             closeModal();
