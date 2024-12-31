@@ -31,10 +31,28 @@
     </section>
 
     <div class="campaign-actions">
-        <a href="{{ url_for('main.generate_email', campaign_id=campaign.id) }}" 
-           class="btn btn-primary">Send Email Now</a>
-        <button class="btn btn-secondary" id="copy-email">Copy Email Text</button>
-        <a href="{{ url_for('main.index') }}" class="btn btn-outline">Back to Campaigns</a>
+        <button class="btn btn-primary" onclick="showEmailPreview({{ campaign.id }})">Preview & Send Email</button>
+        <a href="{{ url_for('main.campaign_details', campaign_id=campaign.id) }}" class="btn btn-secondary">View Details</a>
+    </div>
+
+    <!-- Email Preview Modal -->
+    <div id="emailModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Email Preview</h2>
+            <div class="email-preview">
+                <div class="email-field">
+                    <label>To:</label>
+                    <span id="emailTo"></span>
+                </div>
+                <div class="email-field">
+                    <label>Subject:</label>
+                    <span id="emailSubject"></span>
+                </div>
+                <div class="email-content" id="emailBody"></div>
+            </div>
+            <button class="btn btn-primary" id="sendEmailBtn">Send Email</button>
+        </div>
     </div>
 </article>
 {% endblock %}

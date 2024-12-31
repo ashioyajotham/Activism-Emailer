@@ -92,3 +92,28 @@ function showToast(message, type = 'success') {
         }, 3000);
     }
 }
+
+function showEmailPreview(campaignId) {
+    fetch(`/generate_email/${campaignId}`)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('emailSubject').textContent = data.subject;
+            document.getElementById('emailBody').innerHTML = data.body.replace(/\n/g, '<br>');
+            document.getElementById('emailModal').style.display = 'block';
+            
+            document.getElementById('sendEmailBtn').onclick = function() {
+                window.location.href = data.mailto;
+            };
+        });
+}
+
+// Close modal when clicking X or outside
+document.querySelector('.close').onclick = function() {
+    document.getElementById('emailModal').style.display = 'none';
+}
+
+window.onclick = function(event) {
+    if (event.target == document.getElementById('emailModal')) {
+        document.getElementById('emailModal').style.display = 'none';
+    }
+}
