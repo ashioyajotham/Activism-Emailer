@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="campaigns-header">
+    <h1>Active Campaigns</h1>
+    <div class="search-box">
+        <input type="text" id="campaign-search" placeholder="Search campaigns...">
+        <select id="campaign-filter">
+            <option value="all">All Campaigns</option>
+            <option value="active">Active</option>
+            <option value="urgent">Urgent</option>
+            <option value="archived">Archived</option>
+        </select>
+    </div>
+</section>
+
+<div class="campaigns-grid">
+    {% for campaign in campaigns %}
+    <article class="campaign-card">
+        <div class="campaign-status">
+            <span class="status-badge {{ campaign.status }}">{{ campaign.status }}</span>
+        </div>
+        <h2>{{ campaign.title }}</h2>
+        <p>{{ campaign.description }}</p>
+        <div class="campaign-actions">
+            <a href="{{ url_for('main.campaign_details', campaign_id=campaign.id) }}" 
+               class="btn btn-primary">View Details</a>
+        </div>
+    </article>
+    {% endfor %}
+</div>
+{% endblock %}
