@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, url_for, flash, jsonify
+from flask import Blueprint, render_template, redirect, url_for, flash, jsonify, current_app
 from .models import Campaign, EmailTemplate
 from urllib.parse import quote
 
@@ -24,15 +24,22 @@ def about():
 
 @main.route('/generate_email/<int:campaign_id>')
 def generate_email(campaign_id):
-    campaign = Campaign.query.get_or_404(campaign_id)
-    recipients = ','.join([r.email for r in campaign.recipients])
-    body = campaign.template.body.replace('\n', '%0D%0A')
-    subject = quote(campaign.template.subject)
-    
-    mailto_link = f"mailto:{recipients}?subject={subject}&body={body}"
-    return jsonify({
-        'mailto': mailto_link,
-        'subject': campaign.template.subject,
-        'body': campaign.template.body,
-        'recipients': recipients
-    })
+    try:
+        campaign = Campaign.query.get_or_404(campaign_id)
+        recipients = ','.join(r.email for r in campaign.recipients)
+        
+        # Properly encode body and subject for mailto
+        body = quote(campaign.template.body)
+        subject = quote(campaign.template.subject)
+        
+        mailto_url = f"mailto:{recipients}?subject={subject}&body={body}"
+        
+        return jsonify({
+            'status': 'success',
+            'mailto': mailto_url,
+            'recipients': recipients,
+            'subject': campaign.template.subject,
+            'body': campaign.template.body
+        })
+    except Exception as e:
+        return jsonify({'status': 'error', 'message': str(e)}), 500
