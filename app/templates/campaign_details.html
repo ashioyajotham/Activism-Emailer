@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="campaign-detail">
+    <header class="detail-header">
+        <div class="header-meta">
+            <span class="status-badge {{ campaign.status }}">{{ campaign.status }}</span>
+            <span class="campaign-date">Started: {{ campaign.created_at|datetime }}</span>
+        </div>
+        <h1>{{ campaign.title }}</h1>
+        <p class="campaign-summary">{{ campaign.description }}</p>
+    </header>
+
+    <div class="detail-content">
+        <section class="detail-section">
+            <h2>Background</h2>
+            <div class="section-content">
+                <p>The issue of {{ campaign.title|lower }} has become increasingly concerning, with multiple reports indicating a systematic pattern of violations. Recent events have highlighted the urgency of addressing this matter through coordinated civic action.</p>
+                
+                <div class="key-points">
+                    <h3>Key Issues:</h3>
+                    <ul>
+                        <li>Increasing frequency of incidents</li>
+                        <li>Lack of accountability</li>
+                        <li>Impact on affected communities</li>
+                        <li>Need for systemic change</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="detail-section">
+            <h2>Latest Developments</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="date">December 2023</span>
+                    <p>Multiple new cases reported across different counties</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="date">November 2023</span>
+                    <p>Parliamentary discussion on proposed legislative changes</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="date">October 2023</span>
+                    <p>Civil society organizations release joint statement</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="detail-section">
+            <h2>Related Resources</h2>
+            <div class="resources-grid">
+                <a href="#" class="resource-card" target="_blank">
+                    <h4>Human Rights Watch Report</h4>
+                    <p>Comprehensive analysis of recent cases and patterns</p>
+                </a>
+                <a href="#" class="resource-card" target="_blank">
+                    <h4>News Coverage</h4>
+                    <p>Latest media coverage and investigations</p>
+                </a>
+                <a href="#" class="resource-card" target="_blank">
+                    <h4>Policy Brief</h4>
+                    <p>Proposed solutions and policy recommendations</p>
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <div class="action-bar">
+        <a href="{{ url_for('main.index') }}" class="btn btn-secondary">← Back to Campaigns</a>
+    </div>
+</div>
+{% endblock %}

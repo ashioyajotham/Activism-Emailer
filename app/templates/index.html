@@ -24,7 +24,10 @@
         <p>{{ campaign.description }}</p>
         <div class="campaign-actions">
             <a href="{{ url_for('main.campaign_details', campaign_id=campaign.id) }}" 
-               class="btn btn-primary">View Details</a>
+               class="btn btn-secondary">View Details</a>
+            <a href="javascript:void(0);" 
+               onclick="showEmailPreview({{ campaign.id }})"
+               class="btn btn-primary">Preview & Send Email</a>
         </div>
     </article>
     {% endfor %}

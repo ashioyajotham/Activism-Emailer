@@ -152,11 +152,19 @@ def create_campaigns(templates, recipients):
     return [
         Campaign(
             title='Stop State Abductions',
-            description='Urgent campaign to address state-sponsored abductions in Kenya',
-            template=templates['abduction'],
+            description='Campaign against state-sponsored abductions',
+            background='''State-sponsored abductions have become increasingly common in Kenya, 
+            with numerous cases reported in recent years. Human rights organizations have 
+            documented patterns of enforced disappearances targeting activists, journalists, 
+            and citizens...''',
+            impact='''These abductions have created a climate of fear, silencing voices of 
+            dissent and undermining democratic processes. Families of victims continue to 
+            seek justice without success...''',
+            news_links='''https://www.hrw.org/kenya-abductions,
+            https://www.amnesty.org/kenya-report-2023,
+            https://www.standardmedia.co.ke/state-abductions''',
             status='active',
-            created_at=datetime.utcnow(),
-            recipients=recipients['human_rights']
+            template=templates['abduction']
         ),
         Campaign(
             title='Stop Forced Animal Vaccination',

@@ -11,10 +11,13 @@ class Campaign(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(200), nullable=False)
     description = db.Column(db.Text, nullable=False)
+    background = db.Column(db.Text)  # Detailed background
+    news_links = db.Column(db.Text)  # Comma-separated URLs
+    impact = db.Column(db.Text)  # Impact description
     status = db.Column(db.String(50), default='active')
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     template_id = db.Column(db.Integer, db.ForeignKey('email_template.id'))
-    template = db.relationship('EmailTemplate', backref='campaigns')
+    template = db.relationship('EmailTemplate')
     recipients = db.relationship('Recipient', 
                                secondary='campaign_recipients',
                                backref=db.backref('campaigns', lazy='dynamic'))
