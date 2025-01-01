@@ -458,6 +458,110 @@ body {
     }
 }
 
+/* About Page Styles */
+.about-container {
+    max-width: 900px;
+    margin: 3rem auto;
+    padding: 0 2rem;
+}
+
+.about-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    position: relative;
+}
+
+.about-header h1 {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+}
+
+.about-header::after {
+    content: '';
+    position: absolute;
+    bottom: -1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--primary);
+    border-radius: 3px;
+}
+
+.about-section {
+    background: white;
+    border-radius: 12px;
+    padding: 2.5rem;
+    margin-bottom: 2.5rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+.about-section h2 {
+    color: var(--primary);
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.steps-container {
+    counter-reset: step;
+}
+
+.step-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: var(--light);
+    border-radius: 8px;
+    position: relative;
+}
+
+.step-item::before {
+    counter-increment: step;
+    content: counter(step);
+    min-width: 2rem;
+    height: 2rem;
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-right: 1rem;
+}
+
+.contact-section {
+    text-align: center;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: white;
+    padding: 3rem;
+    border-radius: 12px;
+    margin-top: 4rem;
+}
+
+.contact-section h2 {
+    color: white;
+    margin-bottom: 1.5rem;
+}
+
+.contact-link {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: white;
+    color: var(--primary);
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: transform 0.2s;
+}
+
+.contact-link:hover {
+    transform: translateY(-2px);
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .nav-container {
@@ -510,5 +614,18 @@ body {
         margin: 2vh auto;
         padding: 1.5rem;
         width: 95%;
+    }
+
+    .about-container {
+        padding: 0 1rem;
+        margin: 2rem auto;
+    }
+
+    .about-section {
+        padding: 1.5rem;
+    }
+
+    .contact-section {
+        padding: 2rem 1.5rem;
     }
 }
