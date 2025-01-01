@@ -153,21 +153,59 @@ def create_campaigns(templates, recipients):
         Campaign(
             title='Stop State Abductions',
             description='Campaign against state-sponsored abductions',
-            status='active',
+            background='Rising cases of unexplained disappearances by state security forces targeting activists and asylum seekers has risen alarmingly',
+            impact='Creates climate of fear and undermines rights of citizens as well as asylum seekers as stipulated in the constitution and 1951 Refugee Convention',
             news_links=[
                 {
-                    'title': 'Human Rights Watch Report',
-                    'url': 'https://www.hrw.org/kenya-abductions',
-                    'description': 'Latest analysis on state abductions'
+                    'title': 'Amnesty Kenya Statement',
+                    'url': 'https://www.amnestykenya.org/statement-on-the-abduction-and-disappearance-of-seven-turkish-asylum-seekers-for-immediate-release/',
+                    'description': 'Statement on the abduction and disappearance of asylum seekers'
                 },
                 {
-                    'title': 'Amnesty Report 2023',
-                    'url': 'https://www.amnesty.org/kenya',
-                    'description': 'Documentation of recent cases'
+                    'title': 'Human Rights Watch Report',
+                    'url': 'https://www.hrw.org/news/2024/11/06/kenya-security-forces-abducted-killed-protesters',
+                    'description': 'Latest findings on state abductions'
                 }
             ],
+            status='urgent',
             template=templates['abduction'],
-            recipients=recipients['human_rights']  # Add recipients
+            recipients=recipients['human_rights'],
+            timeline=[
+                {
+                    'date': 'December 2024',
+                    'description': 'Multiple new cases reported across different counties with Ruto promising to stop if citizens become "obedient"'
+                },
+                {
+                    'date': 'November 2024',
+                    'description': 'Kenya Kwanza "pauses" abductions but issues subtle threats'
+                }
+            ]
+        ),
+        Campaign(
+            title='Stop Forced Animal Vaccination',
+            description='Campaign against dangerous forced animal vaccination programs',
+            background='Recent reports of adverse reactions in animals...',
+            impact='This poses a threat to animal welfare...',
+            news_links=[
+                {
+                    'title': 'Veterinary Report',
+                    'url': 'https://www.vetreport.org',
+                    'description': 'Analysis of vaccination impacts'
+                }
+            ],
+            status='active',
+            template=templates['vaccination'],
+            recipients=recipients['animal_welfare'],
+            timeline=[
+                {
+                    'date': 'December 2024',
+                    'description': 'New regulations proposed for mandatory vaccinations'
+                },
+                {
+                    'date': 'November 2024',
+                    'description': 'Animal welfare groups report adverse effects'
+                }
+            ]
         ),
         Campaign(
             title='Stop Term Limits Extension',
@@ -177,38 +215,22 @@ def create_campaigns(templates, recipients):
             news_links=[
                 {
                     'title': 'Constitutional Analysis',
-                    'url': 'https://constitutionnet.org/country/kenya',
-                    'description': 'Legal perspective on term limits'
-                },
-                {
-                    'title': 'Democracy Watch Report',
-                    'url': 'https://freedomhouse.org/country/kenya',
-                    'description': 'Impact on democratic institutions'
+                    'url': 'https://constitutionnet.org',
+                    'description': 'Legal implications of term extensions'
                 }
             ],
-            status='urgent',
+            status='archived',
             template=templates['term_limits'],
-            recipients=recipients['governance']  # Add recipients
-        ),
-        Campaign(
-            title='Stop Forced Animal Vaccination',
-            description='Campaign against dangerous forced animal vaccination programs',
-            background='Recent reports of adverse reactions in animals...',
-            impact='This poses a threat to animal welfare...',
-            news_links=[
+            recipients=recipients['governance'],
+            timeline=[
                 {
-                    'title': 'Animal Rights Report',
-                    'url': 'https://animalrights.org/vaccination',
-                    'description': 'Impact on animal health'
+                    'date': 'November 2024',
+                    'description': 'Parliament gathers public opinion on term extension'
                 },
                 {
-                    'title': 'Vet Association Statement',
-                    'url': 'https://vetsociety.org/vaccination',
-                    'description': 'Safety concerns with vaccines'
+                    'date': 'October - November 2024',
+                    'description': "Twitter protests against term extension gain momentum after Cherargei's comments"
                 }
-            ],
-            status='active',
-            template=templates['vaccination'],
-            recipients=recipients['animal_welfare']
+            ]
         )
     ]

@@ -32,18 +32,14 @@
         <section class="detail-section">
             <h2>Latest Developments</h2>
             <div class="timeline">
-                <div class="timeline-item">
-                    <span class="date">December 2023</span>
-                    <p>Multiple new cases reported across different counties</p>
-                </div>
-                <div class="timeline-item">
-                    <span class="date">November 2023</span>
-                    <p>Parliamentary discussion on proposed legislative changes</p>
-                </div>
-                <div class="timeline-item">
-                    <span class="date">October 2023</span>
-                    <p>Civil society organizations release joint statement</p>
-                </div>
+                {% if campaign.timeline %}
+                    {% for item in campaign.timeline %}
+                    <div class="timeline-item">
+                        <span class="date">{{ item.date }}</span>
+                        <p>{{ item.description }}</p>
+                    </div>
+                    {% endfor %}
+                {% endif %}
             </div>
         </section>
 

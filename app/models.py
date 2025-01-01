@@ -27,6 +27,7 @@ class Campaign(db.Model):
     recipients = db.relationship('Recipient', 
                                secondary=campaign_recipients,
                                backref=db.backref('campaigns', lazy=True))
+    timeline = db.Column(db.JSON, nullable=True)
 
 class Recipient(db.Model):
     id = db.Column(db.Integer, primary_key=True)
