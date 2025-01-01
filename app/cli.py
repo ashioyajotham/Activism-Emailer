@@ -1,5 +1,6 @@
 import click
 from flask.cli import with_appcontext
+from flask import current_app
 from . import db
 from .seed_data import initialize_data
 from flask_migrate import Migrate, upgrade as _upgrade, init, migrate
@@ -34,10 +35,12 @@ def upgrade_db_command():
 
 @db_cli.command('seed')
 @with_appcontext
-def seed_db_command():
-    """Seed database with initial data."""
+def seed_db():
+    """Seed the database."""
+    db.drop_all()
+    db.create_all()
     initialize_data()
-    click.echo('Database seeded.')
+    click.echo('Database seeded successfully.')
 
 @db_cli.command('reset')
 @with_appcontext

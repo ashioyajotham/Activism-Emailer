@@ -153,33 +153,62 @@ def create_campaigns(templates, recipients):
         Campaign(
             title='Stop State Abductions',
             description='Campaign against state-sponsored abductions',
-            background='''State-sponsored abductions have become increasingly common in Kenya, 
-            with numerous cases reported in recent years. Human rights organizations have 
-            documented patterns of enforced disappearances targeting activists, journalists, 
-            and citizens...''',
-            impact='''These abductions have created a climate of fear, silencing voices of 
-            dissent and undermining democratic processes. Families of victims continue to 
-            seek justice without success...''',
-            news_links='''https://www.hrw.org/kenya-abductions,
-            https://www.amnesty.org/kenya-report-2023,
-            https://www.standardmedia.co.ke/state-abductions''',
             status='active',
-            template=templates['abduction']
+            news_links=[
+                {
+                    'title': 'Human Rights Watch Report',
+                    'url': 'https://www.hrw.org/kenya-abductions',
+                    'description': 'Latest analysis on state abductions'
+                },
+                {
+                    'title': 'Amnesty Report 2023',
+                    'url': 'https://www.amnesty.org/kenya',
+                    'description': 'Documentation of recent cases'
+                }
+            ],
+            template=templates['abduction'],
+            recipients=recipients['human_rights']  # Add recipients
+        ),
+        Campaign(
+            title='Stop Term Limits Extension',
+            description='Opposition to unlawful extension of presidential term limits',
+            background='Recent attempts to modify constitutional term limits...',
+            impact='This undermines democratic principles...',
+            news_links=[
+                {
+                    'title': 'Constitutional Analysis',
+                    'url': 'https://constitutionnet.org/country/kenya',
+                    'description': 'Legal perspective on term limits'
+                },
+                {
+                    'title': 'Democracy Watch Report',
+                    'url': 'https://freedomhouse.org/country/kenya',
+                    'description': 'Impact on democratic institutions'
+                }
+            ],
+            status='urgent',
+            template=templates['term_limits'],
+            recipients=recipients['governance']  # Add recipients
         ),
         Campaign(
             title='Stop Forced Animal Vaccination',
             description='Campaign against dangerous forced animal vaccination programs',
+            background='Recent reports of adverse reactions in animals...',
+            impact='This poses a threat to animal welfare...',
+            news_links=[
+                {
+                    'title': 'Animal Rights Report',
+                    'url': 'https://animalrights.org/vaccination',
+                    'description': 'Impact on animal health'
+                },
+                {
+                    'title': 'Vet Association Statement',
+                    'url': 'https://vetsociety.org/vaccination',
+                    'description': 'Safety concerns with vaccines'
+                }
+            ],
+            status='active',
             template=templates['vaccination'],
-            status='urgent',
-            created_at=datetime.utcnow(),
             recipients=recipients['animal_welfare']
-        ),
-        Campaign(
-            title='Stop Unlawful Term Limits Extension',
-            description='Campaign against unconstitutional extension of presidential term limits',
-            template=templates['term_limits'],
-            status='archived',
-            created_at=datetime.utcnow(),
-            recipients=recipients['governance']
         )
     ]
