@@ -1,14 +1,15 @@
 # Hamasisho - Digital Activism Platform
 
 ## Overview
-Hamasisho is a digital activism platform that enables citizens to engage in social justice campaigns through coordinated email actions.  
+Hamasisho enables citizens to engage in social justice campaigns through coordinated email actions.
 
 ## Features
-- Campaign management and tracking
+- Campaign management, tracking and status monitoring
 - Email template generation
 - Campaign status monitoring
 - Responsive design
 - Search and filter capabilities
+- Vercel Speed Insights integration
 
 ## Tech Stack
 - Python/Flask
@@ -16,6 +17,10 @@ Hamasisho is a digital activism platform that enables citizens to engage in soci
 - SQLite
 - HTML/CSS/JavaScript
 - Vercel (Deployment)
+
+## Branches
+- `main`: Production branch, auto-deploys to Vercel
+- `development`: Development branch for new features
 
 ## Installation
 
@@ -25,10 +30,13 @@ Hamasisho is a digital activism platform that enables citizens to engage in soci
 - Git
 
 ### Setup
-```bash
+```batch
 # Clone repository
-git clone https://github.com/ashioyajotham/activism_emailer.git
+git clone https://github.com/yourusername/activism_emailer.git
 cd activism_emailer
+
+# Switch to development branch
+git checkout development
 
 # Create virtual environment
 python -m venv venv
@@ -39,7 +47,120 @@ pip install -r requirements.txt
 
 # Initialize database
 flask db upgrade
+flask db seed
 
 # Run application
 flask run
+```
+### Plan for README Update
+1. Add development branch info
+2. Update installation steps
+3. Include branch workflow
+4. Add Vercel deployment details
+5. Document Speed Insights integration
+
+```markdown
+
+
+# Hamasisho - Digital Activism Platform
+
+## Overview
+Hamasisho enables citizens to engage in social justice campaigns through coordinated email actions.
+
+## Features
+- Campaign management and tracking
+- Email template generation
+- Campaign status monitoring
+- Responsive design
+- Search and filter capabilities
+- Vercel Speed Insights integration
+
+## Tech Stack
+- Python/Flask
+- SQLAlchemy
+- SQLite
+- HTML/CSS/JavaScript
+- Vercel (Deployment)
+
+## Branches
+- `main`: Production branch, auto-deploys to Vercel
+- `development`: Development branch for new features
+
+## Installation
+
+### Prerequisites
+- Python 3.8+
+- pip
+- Git
+
+### Setup
+```batch
+# Clone repository
+git clone https://github.com/yourusername/activism_emailer.git
+cd activism_emailer
+
+# Switch to development branch
+git checkout development
+
+# Create virtual environment
+python -m venv venv
+.\venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Initialize database
+flask db upgrade
+flask db seed
+```
+
+## Development Workflow
+1. Create feature branch from development
+2. Make changes and test locally
+3. Push changes to feature branch
+4. Create PR to development branch
+5. Test in Vercel Preview
+6. Merge to development
+7. Create PR to main when ready
+8. Deploy to production
+
+## Configuration
+Create a .env file:
+```
+FLASK_APP=wsgi.py
+FLASK_ENV=development
+SECRET_KEY=your-secret-key
+```
+
+## Project Structure
+```
+activism_emailer/
+├── app/
+│   ├── __init__.py
+│   ├── models.py
+│   ├── routes.py
+│   └── templates/
+├── static/
+│   ├── css/
+│   └── js/
+├── tests/
+├── .env
+├── config.py
+└── wsgi.py
+```
+
+## Deployment
+- Production: Auto-deploys from main branch
+- Preview: Available for PRs to development
+- Analytics: Vercel Speed Insights enabled
+
+## Contributing
+1. Fork repository
+2. Create feature branch from development
+3. Make changes
+4. Submit PR to development branch
+5. Request review
+
+## License
+MIT License
 ```
