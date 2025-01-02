@@ -32,36 +32,28 @@
         <section class="detail-section">
             <h2>Latest Developments</h2>
             <div class="timeline">
-                <div class="timeline-item">
-                    <span class="date">December 2023</span>
-                    <p>Multiple new cases reported across different counties</p>
-                </div>
-                <div class="timeline-item">
-                    <span class="date">November 2023</span>
-                    <p>Parliamentary discussion on proposed legislative changes</p>
-                </div>
-                <div class="timeline-item">
-                    <span class="date">October 2023</span>
-                    <p>Civil society organizations release joint statement</p>
-                </div>
+                {% if campaign.timeline %}
+                    {% for item in campaign.timeline %}
+                    <div class="timeline-item">
+                        <span class="date">{{ item.date }}</span>
+                        <p>{{ item.description }}</p>
+                    </div>
+                    {% endfor %}
+                {% endif %}
             </div>
         </section>
 
         <section class="detail-section">
             <h2>Related Resources</h2>
             <div class="resources-grid">
-                <a href="#" class="resource-card" target="_blank">
-                    <h4>Human Rights Watch Report</h4>
-                    <p>Comprehensive analysis of recent cases and patterns</p>
-                </a>
-                <a href="#" class="resource-card" target="_blank">
-                    <h4>News Coverage</h4>
-                    <p>Latest media coverage and investigations</p>
-                </a>
-                <a href="#" class="resource-card" target="_blank">
-                    <h4>Policy Brief</h4>
-                    <p>Proposed solutions and policy recommendations</p>
-                </a>
+                {% if campaign.news_links %}
+                    {% for link in campaign.news_links %}
+                        <a href="{{ link.get('url') }}" class="resource-card" target="_blank">
+                            <h4>{{ link.get('title') }}</h4>
+                            <p>{{ link.get('description') }}</p>
+                        </a>
+                    {% endfor %}
+                {% endif %}
             </div>
         </section>
     </div>

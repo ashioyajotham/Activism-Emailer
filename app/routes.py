@@ -16,7 +16,9 @@ def index():
 @main.route('/campaign/<int:campaign_id>')
 def campaign_details(campaign_id):
     campaign = Campaign.query.get_or_404(campaign_id)
-    return render_template('campaign_details.html', campaign=campaign)
+    return render_template('campaign_details.html', 
+                         campaign=campaign,
+                         news_links=campaign.news_links or [])
 
 @main.route('/about')
 def about():

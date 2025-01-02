@@ -153,33 +153,84 @@ def create_campaigns(templates, recipients):
         Campaign(
             title='Stop State Abductions',
             description='Campaign against state-sponsored abductions',
-            background='''State-sponsored abductions have become increasingly common in Kenya, 
-            with numerous cases reported in recent years. Human rights organizations have 
-            documented patterns of enforced disappearances targeting activists, journalists, 
-            and citizens...''',
-            impact='''These abductions have created a climate of fear, silencing voices of 
-            dissent and undermining democratic processes. Families of victims continue to 
-            seek justice without success...''',
-            news_links='''https://www.hrw.org/kenya-abductions,
-            https://www.amnesty.org/kenya-report-2023,
-            https://www.standardmedia.co.ke/state-abductions''',
-            status='active',
-            template=templates['abduction']
+            background='Rising cases of unexplained disappearances by state security forces targeting activists and asylum seekers has risen alarmingly',
+            impact='Creates climate of fear and undermines rights of citizens as well as asylum seekers as stipulated in the constitution and 1951 Refugee Convention',
+            news_links=[
+                {
+                    'title': 'Amnesty Kenya Statement',
+                    'url': 'https://www.amnestykenya.org/statement-on-the-abduction-and-disappearance-of-seven-turkish-asylum-seekers-for-immediate-release/',
+                    'description': 'Statement on the abduction and disappearance of asylum seekers'
+                },
+                {
+                    'title': 'Human Rights Watch Report',
+                    'url': 'https://www.hrw.org/news/2024/11/06/kenya-security-forces-abducted-killed-protesters',
+                    'description': 'Latest findings on state abductions'
+                }
+            ],
+            status='urgent',
+            template=templates['abduction'],
+            recipients=recipients['human_rights'],
+            timeline=[
+                {
+                    'date': 'December 2024',
+                    'description': 'Multiple new cases reported across different counties with Ruto promising to stop if citizens become "obedient"'
+                },
+                {
+                    'date': 'November 2024',
+                    'description': 'Kenya Kwanza "pauses" abductions but issues subtle threats'
+                }
+            ]
         ),
         Campaign(
             title='Stop Forced Animal Vaccination',
             description='Campaign against dangerous forced animal vaccination programs',
+            background='Recent reports of adverse reactions in animals...',
+            impact='This poses a threat to animal welfare...',
+            news_links=[
+                {
+                    'title': 'Veterinary Report',
+                    'url': 'https://www.vetreport.org',
+                    'description': 'Analysis of vaccination impacts'
+                }
+            ],
+            status='active',
             template=templates['vaccination'],
-            status='urgent',
-            created_at=datetime.utcnow(),
-            recipients=recipients['animal_welfare']
+            recipients=recipients['animal_welfare'],
+            timeline=[
+                {
+                    'date': 'December 2024',
+                    'description': 'New regulations proposed for mandatory vaccinations'
+                },
+                {
+                    'date': 'November 2024',
+                    'description': 'Animal welfare groups report adverse effects'
+                }
+            ]
         ),
         Campaign(
-            title='Stop Unlawful Term Limits Extension',
-            description='Campaign against unconstitutional extension of presidential term limits',
-            template=templates['term_limits'],
+            title='Stop Term Limits Extension',
+            description='Opposition to unlawful extension of presidential term limits',
+            background='Recent attempts to modify constitutional term limits...',
+            impact='This undermines democratic principles...',
+            news_links=[
+                {
+                    'title': 'Constitutional Analysis',
+                    'url': 'https://constitutionnet.org',
+                    'description': 'Legal implications of term extensions'
+                }
+            ],
             status='archived',
-            created_at=datetime.utcnow(),
-            recipients=recipients['governance']
+            template=templates['term_limits'],
+            recipients=recipients['governance'],
+            timeline=[
+                {
+                    'date': 'November 2024',
+                    'description': 'Parliament gathers public opinion on term extension'
+                },
+                {
+                    'date': 'October - November 2024',
+                    'description': "Twitter protests against term extension gain momentum after Cherargei's comments"
+                }
+            ]
         )
     ]
