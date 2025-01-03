@@ -56,7 +56,7 @@ def reset_db_command():
             initialize_data()
             click.echo('Database reset and seeded successfully!')
         except Exception as e:
-            click.echo(f'Error seeding database: {e}', err=True)
+            click.echo(f'Error seeding database: {e}', err=True) # Print error message to stderr
             db.session.rollback()
 
 def init_app(app):

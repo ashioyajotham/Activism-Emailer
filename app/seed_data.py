@@ -207,7 +207,42 @@ def create_recipients():
     }
 
 def create_campaigns(templates, recipients):
-    return [
+    campaigns = [
+        Campaign(
+            title='Fufua ICC',
+            description='Campaign to push ICC to reopen 2007/8 PEV cases dropped due to witness interference',
+            background='The 2007/2008 post-election violence cases at ICC were dropped after systematic witness interference, leaving victims without justice.',
+            impact='Reopening these cases would address impunity and ensure justice for PEV victims.',
+            news_links=[
+                {
+                    'title': 'ICC Witness Interference Report',
+                    'url': 'https://www.icc-cpi.int/kenya',
+                    'description': 'Documentation of witness interference patterns'
+                },
+                {
+                    'title': '2007/8 PEV Perpetrators',
+                    'url': 'https://drive.google.com/file/d/1B1kY4Cx3_1w_HXwD_ynTSu2dBLbIk8mT/view',
+                    'description': 'List of known perpetrators and their current status'
+                }
+            ],
+            status='urgent',
+            template=templates['icc_revival'],
+            recipients=recipients['icc'],
+            timeline=[
+                {
+                    'date': 'December 2024',
+                    'description': 'Memories are still fresh as victims commemorate 17th anniversary of PEV'
+                },
+                {
+                    'date': 'December 2010',
+                    'description': 'ICC prosecutor opens investigation into 2007/8 PEV cases'
+                },
+                {
+                    'date': 'December 2007',
+                    'description': 'Victims groups file petition for case reopening'
+                }
+            ]
+        ),
         Campaign(
             title='Stop State Abductions',
             description='Campaign against state-sponsored abductions',
@@ -271,41 +306,6 @@ def create_campaigns(templates, recipients):
             ]
         ),
         Campaign(
-            title='Fufua ICC',
-            description='Campaign to push ICC to reopen 2007/8 PEV cases dropped due to witness interference',
-            background='The 2007/2008 post-election violence cases at ICC were dropped after systematic witness interference, leaving victims without justice.',
-            impact='Reopening these cases would address impunity and ensure justice for PEV victims.',
-            news_links=[
-                {
-                    'title': 'ICC Witness Interference Report',
-                    'url': 'https://www.icc-cpi.int/kenya',
-                    'description': 'Documentation of witness interference patterns'
-                },
-                {
-                    'title': '2007/8 PEV Perpetrators',
-                    'url': 'https://drive.google.com/file/d/1B1kY4Cx3_1w_HXwD_ynTSu2dBLbIk8mT/view',
-                    'description': 'List of known perpetrators and their current status'
-                }
-            ],
-            status='urgent',
-            template=templates['icc_revival'],
-            recipients=recipients['icc'],
-            timeline=[
-                {
-                    'date': 'December 2024',
-                    'description': 'Memories are still fresh as victims commemorate 17th anniversary of PEV'
-                },
-                {
-                    'date': 'December 2010',
-                    'description': 'ICC prosecutor opens investigation into 2007/8 PEV cases'
-                },
-                {
-                    'date': 'December 2007',
-                    'description': 'Victims groups file petition for case reopening'
-                }
-            ]
-        ),
-        Campaign(
             title='Stop Term Limits Extension',
             description='Opposition to unlawful extension of presidential term limits',
             background='Recent attempts to modify constitutional term limits...',
@@ -332,3 +332,6 @@ def create_campaigns(templates, recipients):
             ]
         )
     ]
+    db.session.add_all(campaigns)
+    db.session.commit()
+    return campaigns

@@ -13,11 +13,12 @@ campaign_recipients = db.Table('campaign_recipients',
     db.Column('recipient_id', db.Integer, db.ForeignKey('recipient.id'), primary_key=True)
 )
 
+# Define models
 class Campaign(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(200), nullable=False)
     description = db.Column(db.Text, nullable=False)
-    background = db.Column(db.Text, nullable=True)
+    background = db.Column(db.Text, nullable=True) # nullable here means that the field is optional
     impact = db.Column(db.Text, nullable=True)
     status = db.Column(db.String(50), default='active')
     news_links = db.Column(db.JSON, nullable=True)
@@ -25,8 +26,7 @@ class Campaign(db.Model):
     template_id = db.Column(db.Integer, db.ForeignKey('email_template.id'))
     template = db.relationship('EmailTemplate')
     recipients = db.relationship('Recipient', 
-                               secondary=campaign_recipients,
-                               backref=db.backref('campaigns', lazy=True))
+                               secondary=campaign_recipients)
     timeline = db.Column(db.JSON, nullable=True)
 
 class Recipient(db.Model):
