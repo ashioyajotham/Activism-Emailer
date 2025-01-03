@@ -15,15 +15,16 @@
         <section class="detail-section">
             <h2>Background</h2>
             <div class="section-content">
-                <p>The issue of {{ campaign.title|lower }} has become increasingly concerning, with multiple reports indicating a systematic pattern of violations. Recent events have highlighted the urgency of addressing this matter through coordinated civic action.</p>
+                <p>{{ campaign.background }}</p>
                 
                 <div class="key-points">
                     <h3>Key Issues:</h3>
                     <ul>
-                        <li>Increasing frequency of incidents</li>
-                        <li>Lack of accountability</li>
-                        <li>Impact on affected communities</li>
-                        <li>Need for systemic change</li>
+                        {% if campaign.key_issues %}
+                            {% for issue in campaign.key_issues %}
+                                <li>{{ issue }}</li>
+                            {% endfor %}
+                        {% endif %}
                     </ul>
                 </div>
             </div>

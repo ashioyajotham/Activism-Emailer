@@ -43,7 +43,7 @@ We urgently request:
 Your immediate action on this matter is crucial.
 
 Sincerely,
-[Your Name]'''
+Concerned Kenyan citizen'''
         ),
         'vaccination': EmailTemplate(
             subject='Urgent: Stop Dangerous Forced Animal Vaccination Programs',
@@ -66,7 +66,7 @@ We demand:
 We await your urgent response.
 
 Sincerely,
-[Your Name]'''
+Concerned Kenyan citizen'''
         ),
         'term_limits': EmailTemplate(
             subject='Urgent: Opposition to Unlawful Extension of Presidential Term Limits',
@@ -89,7 +89,7 @@ We demand:
 This matter requires immediate attention to preserve our democratic institutions.
 
 Sincerely,
-[Your Name]'''
+Concerned Kenyan citizen'''
         ),
         'icc_revival': EmailTemplate(
             subject='Urgent: Revive ICC Cases for Post-Election Violence Justice',
@@ -110,7 +110,7 @@ We request:
 - Swift action for justice
 
 Regards,
-[Your name]'''
+Concerned Kenyan citizen'''
         )
     }
 
@@ -242,32 +242,12 @@ def create_campaigns(templates, recipients):
                     'date': 'November 2024',
                     'description': 'Kenya Kwanza "pauses" abductions but issues subtle threats'
                 }
-            ]
-        ),
-        Campaign(
-            title='Stop Forced Animal Vaccination',
-            description='Campaign against dangerous forced animal vaccination programs',
-            background='Recent reports of adverse reactions in animals...',
-            impact='This poses a threat to animal welfare...',
-            news_links=[
-                {
-                    'title': 'Veterinary Report',
-                    'url': 'https://www.vetreport.org',
-                    'description': 'Analysis of vaccination impacts'
-                }
             ],
-            status='active',
-            template=templates['vaccination'],
-            recipients=recipients['animal_welfare'],
-            timeline=[
-                {
-                    'date': 'December 2024',
-                    'description': 'New regulations proposed for mandatory vaccinations'
-                },
-                {
-                    'date': 'November 2024',
-                    'description': 'Animal welfare groups report adverse effects'
-                }
+            key_issues=[
+                'Rising number of enforced disappearances',
+                'Targeting of activists and asylum seekers',
+                'State denial and lack of accountability',
+                'Violation of constitutional rights'
             ]
         ),
         Campaign(
@@ -287,7 +267,7 @@ def create_campaigns(templates, recipients):
                     'description': 'List of known perpetrators and their current status'
                 }
             ],
-            status='active',
+            status='urgent',
             template=templates['icc_revival'],
             recipients=recipients['icc'],
             timeline=[
@@ -303,13 +283,51 @@ def create_campaigns(templates, recipients):
                     'date': 'December 2007',
                     'description': 'Victims groups file petition for case reopening'
                 }
+            ],
+            key_issues=[
+                'Systematic witness interference',
+                'Delayed justice for PEV victims',
+                'Culture of impunity',
+                'Need for witness protection'
+            ]
+        ),
+        Campaign(
+            title='Stop Forced Animal Vaccination',
+            description='Campaign against dangerous forced animal vaccination programs',
+            background='Recent reports of forced animal vaccination programs have raised concerns about the safety and transparency of the process.',
+            impact='This poses a threat to animal welfare and public health, and undermines trust in veterinary services.',
+            news_links=[
+                {
+                    'title': 'Veterinary Report',
+                    'url': 'https://www.vetreport.org',
+                    'description': 'Analysis of vaccination impacts'
+                }
+            ],
+            status='active',
+            template=templates['vaccination'],
+            recipients=recipients['animal_welfare'],
+            timeline=[
+                {
+                    'date': 'December 2024',
+                    'description': 'New regulations proposed for mandatory vaccinations'
+                },
+                {
+                    'date': 'November 2024',
+                    'description': 'Animal welfare groups report adverse effects'
+                }
+            ],
+            key_issues=[
+                'Lack of proper testing protocols',
+                'Animal welfare concerns',
+                'Forced implementation',
+                'Inadequate monitoring of side effects'
             ]
         ),
         Campaign(
             title='Stop Term Limits Extension',
             description='Opposition to unlawful extension of presidential term limits',
             background='Recent attempts to modify constitutional term limits...',
-            impact='This undermines democratic principles...',
+            impact='This undermines democratic principles and sets a dangerous precedent for future violations.',
             news_links=[
                 {
                     'title': 'Constitutional Analysis',
@@ -332,3 +350,6 @@ def create_campaigns(templates, recipients):
             ]
         )
     ]
+    db.session.add_all(campaigns)
+    db.session.commit()
+    return campaigns
