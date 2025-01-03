@@ -32,7 +32,7 @@ Hamasisho enables citizens to engage in social justice campaigns through coordin
 ### Setup
 ```batch
 # Clone repository
-git clone https://github.com/yourusername/activism_emailer.git
+git clone https://github.com/ashioyajotham/activism_emailer.git
 cd activism_emailer
 
 # Switch to development branch
@@ -98,5 +98,5 @@ activism_emailer/
 5. Request review
 
 ## License
-MIT License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 ```
