@@ -90,6 +90,27 @@ This matter requires immediate attention to preserve our democratic institutions
 
 Sincerely,
 [Your Name]'''
+        ),
+        'icc_revival': EmailTemplate(
+            subject='Urgent: Revive ICC Cases for Post-Election Violence Justice',
+            body='''Dear Sir/Madam,
+
+I am writing to urge the revival of ICC cases related to Kenya's 2007/2008 post-election violence, particularly those that were dropped due to witness interference.
+
+Key Points:
+1. Systematic witness interference led to case collapses
+2. Victims still await justice
+3. New evidence has emerged
+4. Pattern of witness disappearances needs investigation
+
+We request:
+- Reopening of dropped cases
+- Investigation of witness interference
+- Protection mechanisms for witnesses
+- Swift action for justice
+
+Regards,
+[Your name]'''
         )
     }
 
@@ -110,6 +131,11 @@ def create_recipients():
                 name='Front Line Defenders',
                 email='info@frontlinedefenders.org',
                 organization='Front Line Defenders'
+            ),
+            Recipient(
+                name='Kenya National Commission on Human Rights',
+                email='info@knchr.org',
+                position='Chairperson'
             )
         ],
         'animal_welfare': [
@@ -144,6 +170,38 @@ def create_recipients():
                 name='Transparency International Kenya',
                 email='transparency@tikenya.org',
                 organization='TI Kenya'
+            ),
+            Recipient(
+                name='Office of the President',
+                email='president@president.go.ke',
+                position='President'
+            )
+        ],
+        'icc': [
+            Recipient(
+                name='ICC Prosecutor',
+                email='otp.informationdesk@icc-cpi.int',
+                position='Office of the Prosecutor'
+            ),
+            Recipient(
+                name='ICC Registry',
+                email='registry@icc-cpi.int',
+                position='Registry Division'
+            ),
+            Recipient(
+                name='UN Human Rights Council',
+                email='registry@ohchr.org',
+                position='Office of the High Commissioner'
+            ),
+            Recipient(
+                name='Kenya Human Rights Commission',
+                email='admin@khrc.or.ke',
+                position='Executive Director'
+            ),
+            Recipient(
+                name='ICC Victims and Witnesses Unit',
+                email='vwu@icc-cpi.int',
+                position='Head of Unit'
             )
         ]
     }
@@ -165,6 +223,11 @@ def create_campaigns(templates, recipients):
                     'title': 'Human Rights Watch Report',
                     'url': 'https://www.hrw.org/news/2024/11/06/kenya-security-forces-abducted-killed-protesters',
                     'description': 'Latest findings on state abductions'
+                },
+                {
+                    'title': 'Abductions as a National Security Threat',
+                    'url': 'https://www.dw.com/en/why-abductions-in-kenya-pose-a-threat-to-national-security/a-71191494',
+                    'description': 'Analysis of abductions as a national security threat'
                 }
             ],
             status='urgent',
@@ -204,6 +267,41 @@ def create_campaigns(templates, recipients):
                 {
                     'date': 'November 2024',
                     'description': 'Animal welfare groups report adverse effects'
+                }
+            ]
+        ),
+        Campaign(
+            title='Fufua ICC',
+            description='Campaign to push ICC to reopen 2007/8 PEV cases dropped due to witness interference',
+            background='The 2007/2008 post-election violence cases at ICC were dropped after systematic witness interference, leaving victims without justice.',
+            impact='Reopening these cases would address impunity and ensure justice for PEV victims.',
+            news_links=[
+                {
+                    'title': 'ICC Witness Interference Report',
+                    'url': 'https://www.icc-cpi.int/kenya',
+                    'description': 'Documentation of witness interference patterns'
+                },
+                {
+                    'title': '2007/8 PEV Perpetrators',
+                    'url': 'https://drive.google.com/file/d/1B1kY4Cx3_1w_HXwD_ynTSu2dBLbIk8mT/view',
+                    'description': 'List of known perpetrators and their current status'
+                }
+            ],
+            status='active',
+            template=templates['icc_revival'],
+            recipients=recipients['icc'],
+            timeline=[
+                {
+                    'date': 'December 2024',
+                    'description': 'Memories are still fresh as victims commemorate 17th anniversary of PEV'
+                },
+                {
+                    'date': 'December 2010',
+                    'description': 'ICC prosecutor opens investigation into 2007/8 PEV cases'
+                },
+                {
+                    'date': 'December 2007',
+                    'description': 'Victims groups file petition for case reopening'
                 }
             ]
         ),
