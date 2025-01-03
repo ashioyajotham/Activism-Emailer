@@ -98,7 +98,4 @@ activism_emailer/
 5. Request review
 
 ## License
-This project is licensed under the [Hamasisho Social Good License](LICENSE.md).
-```
-
-[]: # (END)
+This project is licensed under the [Hamasisho Social Good License](LICENSE.md).```
