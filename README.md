@@ -46,6 +46,7 @@ python -m venv venv
 pip install -r requirements.txt
 
 # Initialize database
+flask db init
 flask db upgrade
 flask db seed
 ```
@@ -98,4 +99,4 @@ activism_emailer/
 5. Request review
 
 ## License
-This project is licensed under the [Hamasisho Social Good License](LICENSE.md).```
+This project is licensed under the [Hamasisho Social Good License](LICENSE.md). Free for non-commercial use and social activism purposes.
