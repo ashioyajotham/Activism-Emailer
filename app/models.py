@@ -32,8 +32,9 @@ class Campaign(db.Model):
 class Recipient(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
-    email = db.Column(db.String(120), unique=True, nullable=False)
-    organization = db.Column(db.String(200))
+    email = db.Column(db.String(120), nullable=False)
+    position = db.Column(db.String(100), nullable=True)  # Changed from 'title' to 'position'
+    organization = db.Column(db.String(100), nullable=True)
 
 class EmailTemplate(db.Model):
     id = db.Column(db.Integer, primary_key=True)
