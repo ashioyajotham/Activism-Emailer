@@ -28,6 +28,7 @@ class Campaign(db.Model):
     recipients = db.relationship('Recipient', 
                                secondary=campaign_recipients)
     timeline = db.Column(db.JSON, nullable=True)
+    key_issues = db.Column(db.JSON, nullable=True)
 
 class Recipient(db.Model):
     id = db.Column(db.Integer, primary_key=True)
