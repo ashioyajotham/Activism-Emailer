@@ -27,6 +27,7 @@ def create_templates():
             body='''Dear Sir/Madam,
 
 I am writing as a deeply concerned citizen regarding the increasing reports of state abductions in Kenya. This escalating human rights issue demands immediate attention and action.
+The sad part is the president has blatantly admitted to those abductions raising concerns on the safety of the citizens.
 
 Key Concerns:
 1. Rising number of unexplained disappearances
