@@ -1,4 +1,4 @@
-import click
+import click # click helps to create command line interfaces
 from flask.cli import with_appcontext
 from flask import current_app
 from . import db
