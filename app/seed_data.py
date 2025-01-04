@@ -342,7 +342,7 @@ def create_campaigns(templates, recipients):
             news_links=[
                 {
                     'title': 'Constitutional Analysis',
-                    'url': 'https://constitutionnet.org',
+                    'url': 'https://constitutionnet.org/country/kenya',
                     'description': 'Legal implications of term extensions'
                 }
             ],
