@@ -131,11 +131,16 @@ def create_recipients():
                 name='Front Line Defenders',
                 email='info@frontlinedefenders.org',
                 organization='Front Line Defenders'
+            ),            
+            Recipient(
+                name='Volker Türk',
+                email='unvfvt@ohchr.org',
+                position='UN Commissioner for Human Rights'
             ),
             Recipient(
-                name='Kenya National Commission on Human Rights',
-                email='info@knchr.org',
-                position='Chairperson'
+                name='WGEID',
+                email='hrc-wg-eid@un.org',
+                position='Working Group on Enforced Disappearances'
             )
         ],
         'animal_welfare': [
