@@ -271,6 +271,11 @@ def create_campaigns(templates, recipients):
                     'title': '2007/8 PEV Perpetrators',
                     'url': 'https://drive.google.com/file/d/1B1kY4Cx3_1w_HXwD_ynTSu2dBLbIk8mT/view',
                     'description': 'List of known perpetrators and their current status'
+                },
+                {
+                    'title': 'Testimonials',
+                    'url': 'https://x.com/Nyamisa_Chela/status/1875080564148973870',
+                    'description': 'An account of Mungiki activities during PEV'
                 }
             ],
             status='urgent',
