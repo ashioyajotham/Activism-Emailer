@@ -23,5 +23,9 @@
       "src": "/(.*)",
       "dest": "/wsgi.py"
     }
-  ]
+  ],
+  "analytics": true,
+  "speedInsights": {
+    "enabled": true
+  }
 }
