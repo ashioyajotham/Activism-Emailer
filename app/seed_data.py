@@ -264,20 +264,33 @@ def create_campaigns(templates, recipients):
                 'title': 'LSK President Statement',
                 'url': 'https://eastleighvoice.co.ke/national/104457/lsk-president-faith-odhiambo-calls-on-judiciary-to-resolve-iebc-standoff/',
                 'description': 'LSK President calls for IEBC resolution'
+                },
+                {
+                'title': 'ICJ Kenya Statement',
+                'url': 'https://icj-kenya.org/news/law-and-orderits-in-kenyans-best-interest-to-ensure-iebc-is-properly-constituted/',
+                'description': 'ICJ Kenya on IEBC reconstitution'
+                },
+                {
+                'title': 'NTV News Report',
+                'url': 'https://ntvkenya.co.ke/politics-power/iebc-still-crippled-with-no-commissioners-yet-more-than-one-year-after-the-general-election/',
+                'description': 'NTV News on IEBC crisis'
                 }
             ],
             status='urgent',
             template=templates['iebc_reconstitution'],
             recipients=recipients['elections'],
             timeline=[
+                
                 {
-                    'date': 'December 2024',
-                    'description': 'IEBC releases report on 2022 elections'
+                    'date': 'July 10th 2024',
+                    'description': 'Ruto assents IEBC Amendment Bill for the reconstitution of IEBC'
                 },
                 {
-                    'date': 'November 2024',
-                    'description': 'Calls for IEBC reconstitution gain momentum'
+                    'date': 'December 2022',
+                    'description': "IEBC commissioners' resign after allegedly being forced and threatened leaving a hole in the commission"
+
                 }
+
             ],
             key_issues=[
                 'Lack of public trust in the IEBC',
