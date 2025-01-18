@@ -112,6 +112,29 @@ We request:
 
 Regards,
 Concerned Kenyan citizen'''
+        ),
+        'iebc_reconstitution': EmailTemplate(
+            subject='Urgent: Call for Reconstitution of IEBC',
+            body='''Dear Sir/Madam,
+
+I am writing to express concern regarding the current state of the Independent Electoral and Boundaries Commission (IEBC) and the urgent need for its reconstitution.
+There are some areas that have gone unaddressed because of the current state of the IEBC. This is all by design by Ruto and co. to ensure that he rigs the 2027 elections and currently bar us recalling MPs for their incompetence.
+Key Concerns:
+1. Lack of public trust in the IEBC
+2. Inadequate transparency in electoral processes
+3. Partisan appointments and influence
+4. Risk of electoral malpractice and disputes
+
+We urgently request:
+- Immediate reconstitution of the IEBC
+- Transparent selection process for commissioners
+- Strengthening of electoral integrity mechanisms
+- Public participation in the reform process
+
+Your prompt action on this matter is essential.
+
+Sincerely,
+Concerned Kenyan Citizen'''
         )
     }
 
@@ -209,11 +232,60 @@ def create_recipients():
                 email='vwu@icc-cpi.int',
                 position='Head of Unit'
             )
+        ],
+        'elections': [
+            Recipient(
+                name='Supreme Court of Kenya',
+                email='supremeregistry@court.go.ke',
+                organization='Judiciary of Kenya'
+            )
         ]
     }
 
 def create_campaigns(templates, recipients):
     return [
+        Campaign(
+            title='Reconstitute IEBC',
+            description='Campaign for the reconstitution of the Independent Electoral and Boundaries Commission',
+            background='The IEBC has never been reconstituted ever since the Cherera 4 were fired leaving the commission in a state of disarray.',
+            impact='The current state of the IEBC threatens the integrity of future elections and the democratic process.',
+            news_links=[
+                {
+                'title': 'EACLJ Report',
+                'url': 'https://eaclj.com/general/295-the-steps-needed-to-fully-reconstitute-the-iebc.html',
+                'description': 'Steps to Reconstitute IEBC'
+                },
+                {
+                'title': 'IEBC Act',
+                'url': 'http://kenyalaw.org/kl/fileadmin/pdfdownloads/Acts/IndependentElectoralandBoundariesCommissionNo9of2011.pdf',
+                'description': 'Official IEBC Act document'
+                },
+                {
+                'title': 'LSK President Statement',
+                'url': 'https://eastleighvoice.co.ke/national/104457/lsk-president-faith-odhiambo-calls-on-judiciary-to-resolve-iebc-standoff/',
+                'description': 'LSK President calls for IEBC resolution'
+                }
+            ],
+            status='urgent',
+            template=templates['iebc_reconstitution'],
+            recipients=recipients['elections'],
+            timeline=[
+                {
+                    'date': 'December 2024',
+                    'description': 'IEBC releases report on 2022 elections'
+                },
+                {
+                    'date': 'November 2024',
+                    'description': 'Calls for IEBC reconstitution gain momentum'
+                }
+            ],
+            key_issues=[
+                'Lack of public trust in the IEBC',
+                'Inadequate transparency in electoral processes',
+                'Partisan appointments and influence',
+                'Risk of electoral malpractice and disputes'
+            ]
+        ),
         Campaign(
             title='Stop State Abductions',
             description='Campaign against state-sponsored abductions',
