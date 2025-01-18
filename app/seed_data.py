@@ -119,17 +119,18 @@ Concerned Kenyan citizen'''
 
 I am writing to express concern regarding the current state of the Independent Electoral and Boundaries Commission (IEBC) and the urgent need for its reconstitution.
 There are some areas that have gone unaddressed because of the current state of the IEBC. This is all by design by Ruto and co. to ensure that he rigs the 2027 elections and currently bar us recalling MPs for their incompetence.
+
 Key Concerns:
 1. Lack of public trust in the IEBC
 2. Inadequate transparency in electoral processes
 3. Partisan appointments and influence
 4. Risk of electoral malpractice and disputes
 
-We urgently request:
-- Immediate reconstitution of the IEBC
-- Transparent selection process for commissioners
-- Strengthening of electoral integrity mechanisms
-- Public participation in the reform process
+We demand:
+- Inclusive stakeholder consultation
+- Transparent selection process
+- Merit-based appointments
+- Public participation in vetting
 
 Your prompt action on this matter is essential.
 
